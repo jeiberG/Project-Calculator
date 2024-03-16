@@ -1,37 +1,21 @@
-let primerNumero = null;
-let operador = null;
-let segundoNumero = null;
+const display = document.getElementById("display");
+const buttons = document.querySelectorAll("button");
 
-function sumar(a, b) {
-    return a + b;
-  }
-  
-function restar(a, b) {
-    return a - b;
-  }
-  
-function multiplicar(a, b) {
-    return a * b;
-  }
-  
-function dividir(a, b) {
-    if (b === 0) {
-      throw new Error("No se puede dividir por cero");
-    }
-    return a / b;
-  }
-  
-function operate(operador,primerNumero,segundoNumero) {
-    switch (operator) {
-        case '+':
-          return sumar(a, b);
-        case '-':
-          return restar(a, b);
-        case '*':
-          return multiplicar(a, b);
-        case '/':
-          return dividir(a, b);
-        default:
-          throw new Error("Operador no válido");
-    }
-}
+buttons.forEach((item)=>{
+	item.onclick=()=>{
+		if(item.id==="clear"){
+			display.innerText="";
+		}else if (item.id === "C") {
+			let string = display.innerText.toString();
+			display.innerText= string.substr(0,string.length-1);
+		}else if (display.innerText != "" && item.id === "equal") {
+			display.innerText= eval(display.innerText)
+		}else if(display.innerText == "" && item.id == "equal"){
+			display.innerText = "sytem32 hakeado... sera borrado en 2s" ;
+			alert(" ERROR:Apresiona aqui para salir");
+			setTimeout(()=> (display.innerText = "" ) , 2000);
+		}else{
+			display.innerText+=item.id;
+		}
+	}
+})
