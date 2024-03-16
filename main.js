@@ -21,3 +21,17 @@ function dividir(a, b) {
     return a / b;
   }
   
+function operate(operador,primerNumero,segundoNumero) {
+    switch (operator) {
+        case '+':
+          return sumar(a, b);
+        case '-':
+          return restar(a, b);
+        case '*':
+          return multiplicar(a, b);
+        case '/':
+          return dividir(a, b);
+        default:
+          throw new Error("Operador no válido");
+    }
+}
